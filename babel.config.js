@@ -8,8 +8,7 @@ module.exports = function (api) {
         {
           root: ["./"],
           alias: {
-            "@atoms": "./components/atoms",
-            "@molecules": "./components/molecules",
+            "@components": "./components",
             "@utils": "./utils",
             "@fixtures": "./test/fixtures",
             "@navigation": "./navigation",

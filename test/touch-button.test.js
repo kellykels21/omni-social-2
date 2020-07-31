@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import TouchButton from "@atoms/touch-button";
+import TouchButton from "@components/atoms/touch-button";
 
 describe("<TouchButton />", () => {
   it("renders correctly", () => {

@@ -1,15 +1,17 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 
-const TouchButton = ({ _onPress, title, color, height, width }) => {
+export default TouchButton = ({ _onPress, title, color, buttonSize }) => {
   return (
-    <View style={styles.container}>
+    <View>
       <TouchableOpacity
-        onPress={_onPress}
+        onPress={() => {
+          _onPress();
+        }}
         style={{
           backgroundColor: color,
-          height: height,
-          width: width,
+          height: buttonSize.height,
+          width: buttonSize.width,
           justifyContent: "center",
         }}
       >
@@ -18,7 +20,3 @@ const TouchButton = ({ _onPress, title, color, height, width }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({});
-
-export default TouchButton;

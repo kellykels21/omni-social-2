@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 
-const Header = ({ headerText, subheadline, alignment }) => {
+export default Header = ({ headerText, subheadline, alignment }) => {
   return (
     <View style={(styles.container, { alignItems: alignment })}>
       <Text style={styles.header}>{headerText}</Text>
@@ -20,5 +20,3 @@ const styles = StyleSheet.create({
   },
   subheadline: {},
 });
-
-export default Header;

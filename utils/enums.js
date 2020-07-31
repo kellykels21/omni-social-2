@@ -8,3 +8,5 @@ export const headerAlignments = {
   center: "center",
   left: "flex-start",
 };
+
+export const imageSizes = {};
