@@ -12,6 +12,7 @@ module.exports = function (api) {
             "@utils": "./utils",
             "@fixtures": "./test/fixtures",
             "@navigation": "./navigation",
+            "@assets": "./assets",
           },
         },
       ],

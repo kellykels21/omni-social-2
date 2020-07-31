@@ -10,3 +10,5 @@ export const headerAlignments = {
 };
 
 export const imageSizes = {};
+
+export const buttonColors = {};

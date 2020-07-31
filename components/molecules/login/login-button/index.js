@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, Image } from "react-native";
 
 import TouchButton from "@components/atoms/touch-button";
-import { buttonSizes } from "@utils/enums";
+import { buttonSizes } from "@assets/styles";
 
 export default function LoginButton({ title, color, imageURL, _handlePress }) {
   return (

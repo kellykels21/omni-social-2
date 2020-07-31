@@ -3,7 +3,7 @@ import { StyleSheet, SafeAreaView } from "react-native";
 
 import Header from "@components/atoms/login/header";
 import LoginButton from "@components/molecules/login/login-button";
-import { headerAlignments } from "@utils/enums";
+import { headerAlignments } from "@assets/styles";
 
 /* TODO:
   Implement social login helper functions for facebook and google
