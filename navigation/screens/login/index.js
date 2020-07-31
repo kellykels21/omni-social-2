@@ -3,16 +3,15 @@ import { StyleSheet, SafeAreaView } from "react-native";
 
 import Header from "@components/atoms/login/header";
 import LoginButton from "@components/molecules/login/login-button";
-import { headerAlignments } from "@assets/styles";
+import { headerAlignments, container } from "@assets/styles";
 
 /* TODO:
   Implement social login helper functions for facebook and google
-  Research Global styles
 */
 
 export default function LoginScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={container}>
       <SafeAreaView style={styles.headerContainer}>
         <Header
           headerText="Hello"
@@ -44,11 +43,6 @@ export default function LoginScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   headerContainer: {
     flex: 2,
     alignItems: "center",

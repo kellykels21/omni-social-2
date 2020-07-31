@@ -12,3 +12,9 @@ export const headerAlignments = {
 export const imageSizes = {};
 
 export const buttonColors = {};
+
+export const container = {
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+};

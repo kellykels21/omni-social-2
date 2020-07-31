@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
+import { container } from "@assets/styles";
 
 export default Avatar = ({ height, width, imageURL }) => {
   return (
-    <View style={styles.container}>
+    <View style={container}>
       <Image
         style={{ height, width }}
         source={{
@@ -13,10 +14,3 @@ export default Avatar = ({ height, width, imageURL }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-});
