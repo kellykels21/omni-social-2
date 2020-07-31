@@ -1,15 +1,12 @@
 import React from "react";
 import { View, Image } from "react-native";
-import { container } from "@assets/styles";
 
-export default Emoji = ({ height, width, imageURL }) => {
+export default Emoji = ({ size, imageURL }) => {
   return (
-    <View style={container}>
+    <View>
       <Image
-        style={{ height, width }}
-        source={{
-          uri: imageURL,
-        }}
+        style={{ height: size.height, width: size.width }}
+        source={imageURL}
       />
     </View>
   );

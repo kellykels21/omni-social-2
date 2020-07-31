@@ -9,7 +9,7 @@ import { headerAlignments, container } from "@assets/styles";
 
 export default function LoginScreen({ navigation }) {
   return (
-    <SafeAreaView style={container}>
+    <SafeAreaView style={[container, { backgroundColor: "#8B60F0" }]}>
       <SafeAreaView style={styles.headerContainer}>
         <Header
           headerText="Hello"

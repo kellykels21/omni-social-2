@@ -1,14 +1,21 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
-import { container } from "@assets/styles";
 
 export default Avatar = ({ size, imageURL }) => {
   return (
-    <View style={container}>
+    <View>
       <Image
-        style={{ height: size.height, width: size.width }}
-        source={require("@assets/images/profilepicture.jpg")}
+        style={[{ height: size.height, width: size.width }, styles.avatarImage]}
+        source={imageURL}
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  avatarImage: {
+    borderWidth: 3,
+    borderColor: "#7DDBC3",
+    borderRadius: 100,
+  },
+});

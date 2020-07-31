@@ -7,7 +7,11 @@ export const buttonSizes = {
 export const avatarSizes = {
   small: { height: 25, width: 25 },
   medium: { height: 35, width: 35 },
-  large: { height: 50, width: 50 },
+  large: { height: 70, width: 70 },
+};
+
+export const emojiSizes = {
+  small: { height: 25, width: 25 },
 };
 
 export const headerAlignments = {
