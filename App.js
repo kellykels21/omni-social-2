@@ -1,21 +1,63 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import LoginScreen from "@navigation/screens/login";
+import HomeScreen from "@navigation/screens/home";
+
+const RootStack = createStackNavigator();
+const LoginStack = createStackNavigator();
+const HomeStack = createStackNavigator();
+
+function Login() {
+  return (
+    <LoginStack.Navigator>
+      <LoginStack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+    </LoginStack.Navigator>
+  );
+}
+
+function Home() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+    </HomeStack.Navigator>
+  );
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <RootStack.Navigator>
+        <RootStack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false, gestureEnabled: false }}
+        />
+        <RootStack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false, gestureEnabled: false }}
+        />
+      </RootStack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "yellow",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
