@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, View } from "react-native";
 
-export default TouchButton = ({ _onPress, title, color, buttonSize }) => {
+export default TouchButton = ({ _onPress, title, color, size }) => {
   return (
     <View>
       <TouchableOpacity
@@ -10,8 +10,8 @@ export default TouchButton = ({ _onPress, title, color, buttonSize }) => {
         }}
         style={{
           backgroundColor: color,
-          height: buttonSize.height,
-          width: buttonSize.width,
+          height: size.height,
+          width: size.width,
           justifyContent: "center",
         }}
       >

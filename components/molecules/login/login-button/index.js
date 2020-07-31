@@ -19,7 +19,7 @@ export default function LoginButton({ title, color, imageURL, _handlePress }) {
         }}
         title={title}
         color={color}
-        buttonSize={buttonSizes.large}
+        size={buttonSizes.large}
       />
     </SafeAreaView>
   );

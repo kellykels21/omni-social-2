@@ -2,14 +2,12 @@ import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import { container } from "@assets/styles";
 
-export default Avatar = ({ height, width, imageURL }) => {
+export default Avatar = ({ size, imageURL }) => {
   return (
     <View style={container}>
       <Image
-        style={{ height, width }}
-        source={{
-          uri: imageURL,
-        }}
+        style={{ height: size.height, width: size.width }}
+        source={require("@assets/images/profilepicture.jpg")}
       />
     </View>
   );

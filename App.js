@@ -37,11 +37,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        <RootStack.Screen
+        {/* <RootStack.Screen
           name="Login"
           component={Login}
           options={{ headerShown: false, gestureEnabled: false }}
-        />
+        /> */}
         <RootStack.Screen
           name="Home"
           component={Home}

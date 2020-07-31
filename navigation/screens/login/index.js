@@ -5,9 +5,7 @@ import Header from "@components/atoms/login/header";
 import LoginButton from "@components/molecules/login/login-button";
 import { headerAlignments, container } from "@assets/styles";
 
-/* TODO:
-  Implement social login helper functions for facebook and google
-*/
+// TODO: Implement social login helper functions for facebook and google
 
 export default function LoginScreen({ navigation }) {
   return (
@@ -27,6 +25,7 @@ export default function LoginScreen({ navigation }) {
           imageURL=""
           _handlePress={() => {
             console.log("Facebook button pressed!");
+            navigation.navigate("Home", { screen: "HomeScreen" });
           }}
         />
         <LoginButton
