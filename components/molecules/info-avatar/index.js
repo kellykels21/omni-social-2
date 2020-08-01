@@ -5,7 +5,7 @@ import Avatar from "@components/atoms/avatar";
 import { emojis } from "@utils/helpers";
 import { avatarSizes, emojiSizes } from "@assets/styles";
 
-export default function FriendActivityThumbnail({
+export default function InfoAvatar({
   name,
   subtext,
   emojiCount = 0,

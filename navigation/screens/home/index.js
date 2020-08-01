@@ -1,15 +1,16 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, Text } from "react-native";
 import { container } from "@assets/styles";
+import CapacityIcon from "@components/atoms/capacity-icon";
 
+// TODO: implement info-jumbotron (molecule)
 // TODO: create FriendActivityList (organism)
 // TODO: create NearbyVenueList (organism)
-// TODO: create CapicityIcon (atom)
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView
-      style={[container, { backgroundColor: "#100D38" }]}
-    ></SafeAreaView>
+    <SafeAreaView style={[container, { backgroundColor: "#100D38" }]}>
+      <Text style={{ color: "white" }}>HOME</Text>
+    </SafeAreaView>
   );
 }

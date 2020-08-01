@@ -20,6 +20,10 @@ export const jumbotronSizes = {
   large: { height: 152, width: 301 },
 };
 
+export const capacityIconSizes = {
+  small: { height: 8, width: 12 },
+};
+
 export const headerAlignments = {
   center: "center",
   left: "flex-start",
