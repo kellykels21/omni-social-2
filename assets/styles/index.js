@@ -14,6 +14,12 @@ export const emojiSizes = {
   small: { height: 25, width: 25 },
 };
 
+export const jumbotronSizes = {
+  small: { height: 50, width: 150 },
+  medium: { height: 75, width: 200 },
+  large: { height: 152, width: 301 },
+};
+
 export const headerAlignments = {
   center: "center",
   left: "flex-start",
