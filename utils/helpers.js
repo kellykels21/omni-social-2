@@ -1,5 +1,7 @@
 import React from "react";
 import Emoji from "@components/atoms/emoji";
+import Avatar from "@components/atoms/avatar";
+import { View } from "react-native";
 // import * as Facebook from "expo-facebook";
 // import axios from "axios";
 // import { AsyncStorage } from "react-native";
@@ -83,4 +85,20 @@ export function emojis(imageURL, emojiSize, emojiCount) {
     id += 1;
   }
   return emojis;
+}
+
+export function avatars(imageURL, avatarSize, friends) {
+  const avatars = [];
+  let id = 1;
+  let margin = -25;
+  for (let i = 0; i < friends; i++) {
+    avatars.push(
+      <View style={{ position: "absolute", marginLeft: margin }}>
+        <Avatar imageURL={imageURL} size={avatarSize} key={id} />
+      </View>
+    );
+    id += 1;
+    margin -= 15;
+  }
+  return avatars;
 }

@@ -11,7 +11,8 @@ export const avatarSizes = {
 };
 
 export const emojiSizes = {
-  small: { height: 25, width: 25 },
+  small: { height: 15, width: 15 },
+  large: { height: 70, width: 70 },
 };
 
 export const jumbotronSizes = {
