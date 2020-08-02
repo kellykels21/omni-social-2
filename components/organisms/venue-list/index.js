@@ -1,16 +1,14 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
-import { container } from "@assets/styles";
+import { View, FlatList } from "react-native";
 import InfoJumbotron from "@components/molecules/info-jumbotron";
 
 export default VenueList = () => {
   return (
     <View>
-      <Text style={{ color: "white" }}>Venue List</Text>
-      {/* <FlatList
+      <FlatList
         data={[
           {
-            name: "venue1",
+            name: "Golden Star Cafe",
             placeId: "some-placeId",
             rsvps: 15,
             status: 3,
@@ -25,6 +23,14 @@ export default VenueList = () => {
             location: {},
             photoReference: "",
           },
+          {
+            name: "venue3",
+            placeId: "some-placeId3",
+            rsvps: 50,
+            status: 5,
+            location: {},
+            photoReference: "",
+          },
         ]}
         renderItem={({ item }) => (
           <InfoJumbotron
@@ -32,10 +38,11 @@ export default VenueList = () => {
             capacity={item.rsvps}
             emojiCount={item.status}
             imageURL={item.photoReference}
+            name={item.name}
             key={item.placeId}
           />
         )}
-      /> */}
+      />
     </View>
   );
 };
