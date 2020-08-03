@@ -1,11 +1,12 @@
 import React from "react";
 import Emoji from "@components/atoms/emoji";
 import Avatar from "@components/atoms/avatar";
+import * as Location from "expo-location";
 import { View } from "react-native";
+import { GOOGLE_API_KEY } from "@env";
 // import * as Facebook from "expo-facebook";
-// import axios from "axios";
+import axios from "axios";
 // import { AsyncStorage } from "react-native";
-// import { FB_API_ID } from "react-native-dotenv";
 
 // export async function facebookLogin() {
 //   try {
@@ -76,6 +77,31 @@ import { View } from "react-native";
 //   console.log(AsyncStorage.getItem("@UserAuthId"));
 //   // navigation.navigate("Tabs", { screen: "Home" });
 // }
+
+export async function fetchLocalVenues() {
+  //LOCATION PERMISSIONS
+  let { status } = await Location.requestPermissionsAsync();
+  if (status !== "granted") {
+    setErrorMsg("Permission to access location was denied");
+  }
+
+  let location = await Location.getCurrentPositionAsync({});
+  const radius = 8000;
+
+  const results = await axios.get(
+    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+      location.coords.latitude +
+      "," +
+      location.coords.longitude +
+      "&type=bar&key=" +
+      GOOGLE_API_KEY +
+      "&keyword=bar&radius=" +
+      radius +
+      " &opennow=true"
+  );
+
+  return results.data;
+}
 
 export function emojis(imageURL, emojiSize, emojiCount) {
   const emojis = [];
