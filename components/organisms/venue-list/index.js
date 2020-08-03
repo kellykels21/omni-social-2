@@ -1,45 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, FlatList } from "react-native";
 import InfoJumbotron from "@components/molecules/info-jumbotron";
+import { GOOGLE_API_KEY } from "@env";
 
-export default VenueList = () => {
+export default VenueList = ({ venues }) => {
+  function renderImage({ item }) {
+    if (item.photos) {
+      return {
+        uri:
+          "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
+          item.photos[0].photo_reference +
+          "&key=" +
+          GOOGLE_API_KEY,
+      };
+    } else {
+      return require("@assets/images/image-placeholder.jpg");
+    }
+  }
+
   return (
     <View>
       <FlatList
-        data={[
-          {
-            name: "Golden Star Cafe",
-            placeId: "some-placeId",
-            rsvps: 15,
-            status: 3,
-            location: {},
-            photoReference: "",
-          },
-          {
-            name: "venue2",
-            placeId: "some-placeId2",
-            rsvps: 20,
-            status: 1,
-            location: {},
-            photoReference: "",
-          },
-          {
-            name: "venue3",
-            placeId: "some-placeId3",
-            rsvps: 50,
-            status: 5,
-            location: {},
-            photoReference: "",
-          },
-        ]}
+        data={venues}
         renderItem={({ item }) => (
           <InfoJumbotron
             friends={3}
             capacity={item.rsvps}
-            emojiCount={item.status}
-            imageURL={item.photoReference}
+            emojiCount={item.rating}
+            image={renderImage({ item })}
             name={item.name}
-            key={item.placeId}
+            key={item.place_id}
           />
         )}
       />

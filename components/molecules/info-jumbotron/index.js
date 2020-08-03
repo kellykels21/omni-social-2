@@ -17,6 +17,7 @@ export default InfoJumbotron = ({
   emojiCount = 0,
   capacity = 0,
   name,
+  image,
 }) => {
   return (
     <View style={styles.container}>
@@ -51,7 +52,7 @@ export default InfoJumbotron = ({
       </View>
 
       <View style={{ alignItems: "center" }}>
-        <Jumbotron size={jumbotronSizes.large} imageURL={""} />
+        <Jumbotron size={jumbotronSizes.large} image={image} />
         {emojiCount >= 3 && (
           <View style={styles.bigEmoji}>
             <Emoji

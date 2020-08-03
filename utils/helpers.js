@@ -97,7 +97,7 @@ export async function fetchLocalVenues() {
       GOOGLE_API_KEY +
       "&keyword=bar&radius=" +
       radius +
-      " &opennow=true"
+      " &opennow=true&rankby=prominence"
   );
 
   return results.data;

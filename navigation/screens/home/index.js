@@ -6,12 +6,22 @@ import { fetchLocalVenues } from "@utils/helpers";
 
 // TODO: create FriendActivityList (organism)
 // TODO: create VenueList (organism)
-// TODO: make api response data pass into props
 
 export default function HomeScreen() {
+  const [venues, setVenues] = useState([]);
+
+  useEffect(() => {
+    let data;
+    async function fetchData() {
+      data = await fetchLocalVenues();
+      setVenues(data.results);
+    }
+    fetchData();
+  }, []);
+
   return (
     <SafeAreaView style={[container, { backgroundColor: "#100D38" }]}>
-      <VenueList />
+      <VenueList venues={venues} />
     </SafeAreaView>
   );
 }

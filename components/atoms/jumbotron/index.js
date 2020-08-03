@@ -1,12 +1,12 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Image } from "react-native";
 
-export default Jumbotron = ({ size, imageURL }) => {
+export default Jumbotron = ({ size, image }) => {
   return (
     <SafeAreaView>
       <Image
         style={[{ height: size.height, width: size.width }, styles.jumbotron]}
-        source={imageURL}
+        source={image}
       />
     </SafeAreaView>
   );
