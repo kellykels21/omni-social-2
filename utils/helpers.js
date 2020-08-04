@@ -78,6 +78,22 @@ import axios from "axios";
 //   // navigation.navigate("Tabs", { screen: "Home" });
 // }
 
+// Render Image (Jumbotron)
+export function renderImage({ item }) {
+  if (item.photos) {
+    return {
+      uri:
+        "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=200&photoreference=" +
+        item.photos[0].photo_reference +
+        "&key=" +
+        GOOGLE_API_KEY,
+    };
+  } else {
+    return require("@assets/images/image-placeholder.jpg");
+  }
+}
+
+// Google API
 export async function fetchLocalVenues() {
   //LOCATION PERMISSIONS
   let { status } = await Location.requestPermissionsAsync();
@@ -103,6 +119,7 @@ export async function fetchLocalVenues() {
   return results.data;
 }
 
+// Iterators
 export function emojis(imageURL, emojiSize, emojiCount) {
   const emojis = [];
   let id = 1;
