@@ -3,7 +3,7 @@ import Emoji from "@components/atoms/emoji";
 import Avatar from "@components/atoms/avatar";
 import * as Location from "expo-location";
 import { View } from "react-native";
-import { GOOGLE_API_KEY } from "@env";
+import { GOOGLE_API_KEY, OMNI_API_URL } from "@env";
 // import * as Facebook from "expo-facebook";
 import axios from "axios";
 // import { AsyncStorage } from "react-native";
@@ -78,7 +78,31 @@ import axios from "axios";
 //   // navigation.navigate("Tabs", { screen: "Home" });
 // }
 
-// Render Image (Jumbotron)
+/*
+  OMNI API
+*/
+export async function saveVenues(data) {
+  const venueList = JSON.stringify(data);
+  try {
+    console.log("Saving Venues to DB...");
+    await axios({
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      url: OMNI_API_URL + "/venue/new/batch",
+      data: {
+        venues: venueList,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+/*
+
+  Render Image (Jumbotron)
+
+*/
 export function renderImage({ item }) {
   if (item.photos) {
     return {
@@ -93,7 +117,11 @@ export function renderImage({ item }) {
   }
 }
 
-// Google API
+/*
+
+  Google API
+
+*/
 export async function fetchLocalVenues() {
   //LOCATION PERMISSIONS
   let { status } = await Location.requestPermissionsAsync();
@@ -119,7 +147,11 @@ export async function fetchLocalVenues() {
   return results.data;
 }
 
-// Iterators
+/*
+
+  Iterators
+
+*/
 export function emojis(imageURL, emojiSize, emojiCount) {
   const emojis = [];
   let id = 1;
