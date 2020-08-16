@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, SafeAreaView, View } from "react-native";
-
 import Avatar from "@components/atoms/avatar";
 import { emojis } from "@utils/helpers";
 import { avatarSizes, emojiSizes } from "@assets/styles";

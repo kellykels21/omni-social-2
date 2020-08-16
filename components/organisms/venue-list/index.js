@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View, FlatList, TouchableOpacity } from "react-native";
 import InfoJumbotron from "@components/molecules/info-jumbotron";
-import { GOOGLE_API_KEY } from "@env";
 import { renderImage } from "@utils/helpers";
 
 export default VenueList = ({ venues, _onPress }) => {

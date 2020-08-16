@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView } from "react-native";
 import { container } from "@assets/styles";
 import VenueList from "@components/organisms/venue-list";
 import { fetchLocalVenues, saveVenues } from "@utils/helpers";
