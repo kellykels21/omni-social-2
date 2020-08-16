@@ -5,7 +5,7 @@ import VenueList from "@components/organisms/venue-list";
 import { fetchLocalVenues, saveVenues } from "@utils/helpers";
 
 // TODO: create FriendActivityList (organism)
-// TODO: create VenueList (organism)
+// TODO: create Venue Details screen (screens)
 
 export default function HomeScreen() {
   const [venues, setVenues] = useState([]);
@@ -25,7 +25,12 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={[container, { backgroundColor: "#100D38" }]}>
-      <VenueList venues={venues} />
+      <VenueList
+        venues={venues}
+        _onPress={(item) => {
+          console.log("venue: " + item.place_id);
+        }}
+      />
     </SafeAreaView>
   );
 }
