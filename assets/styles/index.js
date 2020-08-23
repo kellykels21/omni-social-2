@@ -1,6 +1,6 @@
 export const buttonSizes = {
   small: { height: 50, width: 150 },
-  medium: { height: 50, width: 200 },
+  medium: { height: 46, width: 134 },
   large: { height: 60, width: 225 },
 };
 

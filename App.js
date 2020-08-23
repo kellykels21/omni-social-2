@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import LoginScreen from "@navigation/screens/login";
 import HomeScreen from "@navigation/screens/home";
+import VenueDetailsScreen from "@navigation/screens/home/venue-details";
 
 const RootStack = createStackNavigator();
 const LoginStack = createStackNavigator();
@@ -27,6 +28,11 @@ function Home() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <HomeStack.Screen
+        name="VenueDetails"
+        component={VenueDetailsScreen}
         options={{ headerShown: false, gestureEnabled: false }}
       />
     </HomeStack.Navigator>

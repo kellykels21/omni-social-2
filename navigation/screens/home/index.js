@@ -7,11 +7,13 @@ import { fetchLocalVenues, saveVenues } from "@utils/helpers";
 // TODO: create FriendActivityList (organism)
 // TODO: create Venue Details screen (screens)
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [venues, setVenues] = useState([]);
+  const [currentLocation, setCurrentLocation] = useState("");
 
   useEffect(() => {
     let data;
+
     async function fetchData() {
       //Get Local Venues from Google
       data = await fetchLocalVenues();
@@ -20,6 +22,7 @@ export default function HomeScreen() {
       //save data to our db
       await saveVenues(venues);
     }
+
     fetchData();
   }, []);
 
@@ -28,7 +31,10 @@ export default function HomeScreen() {
       <VenueList
         venues={venues}
         _onPress={(item) => {
-          console.log("venue: " + item.place_id);
+          navigation.navigate("Home", {
+            screen: "VenueDetails",
+            params: { item, setCurrentLocation },
+          });
         }}
       />
     </SafeAreaView>
