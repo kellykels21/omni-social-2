@@ -5,7 +5,7 @@ import VenueList from "@components/organisms/venue-list";
 import { fetchLocalVenues, saveVenues } from "@utils/helpers";
 
 // TODO: create FriendActivityList (organism)
-// TODO: implement bottom tab navigation
+// TODO: implement login screen
 // TODO: re-implement and rethink friends and friend search
 
 export default function HomeScreen({ navigation }) {
@@ -32,9 +32,10 @@ export default function HomeScreen({ navigation }) {
       <VenueList
         venues={venues}
         _onPress={(item) => {
-          navigation.navigate("Home", {
-            screen: "VenueDetails",
-            params: { item, currentLocation, setCurrentLocation },
+          navigation.navigate("VenueDetails", {
+            item,
+            currentLocation,
+            setCurrentLocation,
           });
         }}
       />

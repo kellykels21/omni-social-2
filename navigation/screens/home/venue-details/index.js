@@ -64,10 +64,10 @@ export default function VenueDetails({ route }) {
       {/*  About Section */}
       <View
         style={{
-          flex: 2,
+          flex: 1,
           justifyContent: "flex-start",
           alignSelf: "stretch",
-          padding: 10,
+          padding: 20,
         }}
       >
         <Text style={{ color: "white", fontSize: 20 }}>About</Text>

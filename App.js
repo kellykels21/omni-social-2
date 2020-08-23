@@ -1,14 +1,16 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import LoginScreen from "@navigation/screens/login";
 import HomeScreen from "@navigation/screens/home";
+import FriendsScreen from "@navigation/screens/friends";
 import VenueDetailsScreen from "@navigation/screens/home/venue-details";
 
 const RootStack = createStackNavigator();
 const LoginStack = createStackNavigator();
-const HomeStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function Login() {
   return (
@@ -22,20 +24,18 @@ function Login() {
   );
 }
 
-function Home() {
+function Tabs() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{ headerShown: false, gestureEnabled: false }}
-      />
-      <HomeStack.Screen
-        name="VenueDetails"
-        component={VenueDetailsScreen}
-        options={{ gestureEnabled: false }}
-      />
-    </HomeStack.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        style: {
+          backgroundColor: "rgba(22, 22, 22, 1.0)",
+        },
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Friends" component={FriendsScreen} />
+    </Tab.Navigator>
   );
 }
 
@@ -49,10 +49,11 @@ export default function App() {
           options={{ headerShown: false, gestureEnabled: false }}
         /> */}
         <RootStack.Screen
-          name="Home"
-          component={Home}
+          name="Tabs"
+          component={Tabs}
           options={{ headerShown: false, gestureEnabled: false }}
         />
+        <RootStack.Screen name="VenueDetails" component={VenueDetailsScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
