@@ -5,7 +5,8 @@ import VenueList from "@components/organisms/venue-list";
 import { fetchLocalVenues, saveVenues } from "@utils/helpers";
 
 // TODO: create FriendActivityList (organism)
-// TODO: create Venue Details screen (screens)
+// TODO: implement bottom tab navigation
+// TODO: re-implement and rethink friends and friend search
 
 export default function HomeScreen({ navigation }) {
   const [venues, setVenues] = useState([]);

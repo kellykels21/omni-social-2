@@ -49,8 +49,8 @@ export default function VenueDetails({ route }) {
         {imHere && (
           <TouchButton
             _onPress={() => {
-              setCurrentLocation(placeId);
-              setImHere(true);
+              setCurrentLocation("");
+              setImHere(false);
             }}
             title={"I'm Leaving"}
             color={"#7DDBC3"}
