@@ -33,7 +33,7 @@ export default function HomeScreen({ navigation }) {
         _onPress={(item) => {
           navigation.navigate("Home", {
             screen: "VenueDetails",
-            params: { item, setCurrentLocation },
+            params: { item, currentLocation, setCurrentLocation },
           });
         }}
       />

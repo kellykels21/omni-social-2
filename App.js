@@ -33,7 +33,7 @@ function Home() {
       <HomeStack.Screen
         name="VenueDetails"
         component={VenueDetailsScreen}
-        options={{ headerShown: false, gestureEnabled: false }}
+        options={{ gestureEnabled: false }}
       />
     </HomeStack.Navigator>
   );
