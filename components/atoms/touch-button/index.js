@@ -21,10 +21,9 @@ export default TouchButton = ({
           width: size.width,
           justifyContent: "center",
           borderRadius: radius,
-          color: textColor,
         }}
       >
-        <Text style={{ textAlign: "center" }}>{title}</Text>
+        <Text style={{ textAlign: "center", color: textColor }}>{title}</Text>
       </TouchableOpacity>
     </View>
   );

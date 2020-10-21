@@ -3,38 +3,39 @@ import Emoji from "@components/atoms/emoji";
 import Avatar from "@components/atoms/avatar";
 import * as Location from "expo-location";
 import { View } from "react-native";
-import { GOOGLE_API_KEY, OMNI_API_URL } from "@env";
-// import * as Facebook from "expo-facebook";
+import { GOOGLE_API_KEY, OMNI_API_URL, FB_API_ID } from "@env";
+import * as Facebook from "expo-facebook";
 import axios from "axios";
-// import { AsyncStorage } from "react-native";
+import { AsyncStorage } from "react-native";
 
-// export async function facebookLogin() {
-//   try {
-//     await Facebook.initializeAsync(FB_API_ID);
-//     const {
-//       type,
-//       token,
-//       expires,
-//       permissions,
-//       declinedPermissions,
-//     } = await Facebook.logInWithReadPermissionsAsync({
-//       permissions: ["public_profile", "email"],
-//     });
-//     if (type === "success") {
-//       // Get the user's name using Facebook's Graph API
-//       const response = await fetch(
-//         `https://graph.facebook.com/me?access_token=${token}`
-//       );
-//       const userData = await response.json();
+export async function facebookLogin() {
+  try {
+    await Facebook.initializeAsync(FB_API_ID);
+    const {
+      type,
+      token,
+      expires,
+      permissions,
+      declinedPermissions,
+    } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ["public_profile", "email"],
+    });
+    if (type === "success") {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`
+      );
+      const userData = await response.json();
 
-//       saveNewUser(userData.name, null, userData.id);
-//     } else {
-//       // type === 'cancel'
-//     }
-//   } catch ({ message }) {
-//     alert(`Facebook Login Error: ${message}`);
-//   }
-// }
+      // await saveNewUser(userData.name, null, userData.id);
+      return userData;
+    } else {
+      // type === 'cancel'
+    }
+  } catch ({ message }) {
+    alert(`Facebook Login Error: ${message}`);
+  }
+}
 
 // export async function googleLogin() {
 //   const { type, accessToken, user } = await Google.logInAsync({
@@ -49,34 +50,26 @@ import axios from "axios";
 //   }
 // }
 
-// async function saveNewUser(name, email, authId) {
-//   var userData = JSON.stringify({
-//     name,
-//     email,
-//     authId,
-//   });
+export async function saveNewUser(handle, email, firstName, lastName, authId) {
+  var userData = JSON.stringify({
+    handle,
+    email,
+    firstName,
+    lastName,
+    authId,
+  });
 
-//   try {
-//     await axios({
-//       method: "post",
-//       headers: { "Content-Type": "application/json" },
-//       url: OMNI_API_URL + "/user/new",
-//       data: userData,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
+  const response = await axios({
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    url: OMNI_API_URL + "/user/new",
+    data: userData,
+  });
+  console.log("im here");
+  await AsyncStorage.setItem("@UserAuthID", authId);
 
-//   try {
-//     await AsyncStorage.setItem("@UserAuthID", authId);
-//   } catch (error) {
-//     // Error saving data
-//     throw error;
-//   }
-
-//   console.log(AsyncStorage.getItem("@UserAuthId"));
-//   // navigation.navigate("Tabs", { screen: "Home" });
-// }
+  return response;
+}
 
 /*
   OMNI API

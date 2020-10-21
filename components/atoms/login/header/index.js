@@ -13,6 +13,10 @@ export default Header = ({ headerText, subheadline, alignment }) => {
 const styles = StyleSheet.create({
   header: {
     fontSize: 115,
+    color: "white",
   },
-  subheadline: {},
+  subheadline: {
+    color: "white",
+    fontSize: 20,
+  },
 });
