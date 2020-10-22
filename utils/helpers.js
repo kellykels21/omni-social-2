@@ -91,6 +91,25 @@ export async function saveVenues(data) {
   }
 }
 
+export async function checkForExistingUser(authId) {
+  try {
+    console.log("Checking for Existing User...");
+
+    const user = await axios({
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+      url: OMNI_API_URL + "/user/search/authId?authId=" + authId,
+    });
+    if (user.handle !== null && user.handle !== "") {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 /*
 
   Render Image (Jumbotron)

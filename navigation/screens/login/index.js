@@ -5,7 +5,7 @@ import TouchButton from "@components/atoms/touch-button";
 import { buttonSizes } from "@assets/styles";
 import { headerAlignments, container } from "@assets/styles";
 import { AsyncStorage } from "react-native";
-import { facebookLogin } from "@utils/helpers";
+import { facebookLogin, checkForExistingUser } from "@utils/helpers";
 
 // TODO: Implement social login helper functions for google
 // TODO: check for auth id in db after receiving auth id
@@ -39,7 +39,13 @@ export default function LoginScreen({ navigation }) {
               authId: fbData.id,
               name: fbData.name,
             };
-            navigation.navigate("Form", { userData });
+
+            const exists = await checkForExistingUser(userData.authId);
+            if (exists) {
+              navigation.navigate("Tabs", { screen: "Home" });
+            } else {
+              navigation.navigate("Form", { userData });
+            }
           }}
           title={"Facebook"}
           color={"blue"}
