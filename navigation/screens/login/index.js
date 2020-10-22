@@ -8,7 +8,6 @@ import { AsyncStorage } from "react-native";
 import { facebookLogin, checkForExistingUser } from "@utils/helpers";
 
 // TODO: Implement social login helper functions for google
-// TODO: check for auth id in db after receiving auth id
 // TODO: clear db and sign up using fb
 
 export default function LoginScreen({ navigation }) {
