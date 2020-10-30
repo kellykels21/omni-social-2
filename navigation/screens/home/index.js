@@ -2,16 +2,23 @@ import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { container } from "@assets/styles";
 import VenueList from "@components/organisms/venue-list";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { fetchLocalVenues, saveVenues } from "@utils/helpers";
 
-// TODO: create FriendActivityList (organism)
-// TODO: implement login screen
+// TODO: sync currentlocation to db
 // TODO: re-implement and rethink friends and friend search
+// TODO: create FriendActivityList (organism)
 
 export default function HomeScreen({ navigation }) {
   const [venues, setVenues] = useState([]);
   const [currentLocation, setCurrentLocation] = useState("");
 
+  //Current Location
+  useEffect(() => {
+    //API call to the server to update current location and update venue users list
+  }, currentLocation);
+
+  //Get Venues from Google
   useEffect(() => {
     let data;
 
@@ -22,6 +29,9 @@ export default function HomeScreen({ navigation }) {
 
       //save data to our db
       await saveVenues(venues);
+
+      const userObject = await AsyncStorage.getItem("@user_info");
+      console.log("USER:", JSON.parse(userObject));
     }
 
     fetchData();

@@ -15,8 +15,16 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "usesAppleSignIn": true,
+      "bundleIdentifier": "com.markelspellman.omnisocialapp",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.678516748760-7an6fldr062ibtf9oo7fe5210qa3rihr"
+        }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
+
     "web": {
       "favicon": "./assets/favicon.png"
     }

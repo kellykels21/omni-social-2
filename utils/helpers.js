@@ -5,8 +5,9 @@ import * as Location from "expo-location";
 import { View } from "react-native";
 import { GOOGLE_API_KEY, OMNI_API_URL, FB_API_ID } from "@env";
 import * as Facebook from "expo-facebook";
+import * as Google from "expo-google-app-auth";
 import axios from "axios";
-import { AsyncStorage } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function facebookLogin() {
   try {
@@ -37,18 +38,27 @@ export async function facebookLogin() {
   }
 }
 
-// export async function googleLogin() {
-//   const { type, accessToken, user } = await Google.logInAsync({
-//     iosClientId: GOOGLE_IOS_CLIENT_ID,
-//     androidClientId: GOOGLE_ANDROID_CLIENT_ID,
-//   });
+export async function googleLogin() {
+  try {
+    const result = await Google.logInAsync({
+      iosClientId:
+        "678516748760-migvhecblr3b7actrges0o8v4q3r36dr.apps.googleusercontent.com",
+      scopes: ["profile", "email"],
+    });
 
-//   if (type === "success") {
-//     /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
-//     console.log(user);
-//     await saveNewUser(user.name, user.email, user.id);
-//   }
-// }
+    if (result.type === "success") {
+      return result;
+    } else {
+      return { cancelled: true };
+    }
+  } catch (e) {
+    return { error: true };
+  }
+
+  if (type === "success") {
+    // Then you can use the Google REST API
+  }
+}
 
 export async function saveNewUser(handle, email, firstName, lastName, authId) {
   var userData = JSON.stringify({
@@ -100,7 +110,9 @@ export async function checkForExistingUser(authId) {
       headers: { "Content-Type": "application/json" },
       url: OMNI_API_URL + "/user/search/authId?authId=" + authId,
     });
-    if (user.handle !== null && user.handle !== "") {
+
+    if (user.data.authId !== undefined) {
+      await AsyncStorage.setItem("@user_info", JSON.stringify(user.data));
       return true;
     } else {
       return false;
