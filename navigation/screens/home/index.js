@@ -11,12 +11,6 @@ import { fetchLocalVenues, saveVenues } from "@utils/helpers";
 
 export default function HomeScreen({ navigation }) {
   const [venues, setVenues] = useState([]);
-  const [currentLocation, setCurrentLocation] = useState("");
-
-  //Current Location
-  useEffect(() => {
-    //API call to the server to update current location and update venue users list
-  }, currentLocation);
 
   //Get Venues from Google
   useEffect(() => {
