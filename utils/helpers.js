@@ -122,6 +122,15 @@ export async function checkForExistingUser(authId) {
   }
 }
 
+export async function addUserCurrentLocation(userId, placeId) {
+  console.log(userId);
+  console.log(placeId);
+}
+
+export async function removeUserCurrentLocation(userId) {
+  console.log(userId);
+}
+
 /*
 
   Render Image (Jumbotron)

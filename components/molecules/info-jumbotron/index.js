@@ -10,7 +10,7 @@ import { avatars, emojis } from "@utils/helpers";
 import Jumbotron from "@components/atoms/jumbotron";
 import CapacityIcon from "@components/atoms/capacity-icon";
 
-// TODO: Make props into an dynamic
+// TODO: Make props dynamic
 
 export default InfoJumbotron = ({
   friends = 0,

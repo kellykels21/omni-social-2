@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, Text, View } from "react-native";
 import { container } from "@assets/styles";
-import { renderImage } from "@utils/helpers";
+import {
+  renderImage,
+  addUserCurrentLocation,
+  removeUserCurrentLocation,
+} from "@utils/helpers";
 import TouchButton from "@components/atoms/touch-button";
 import { buttonSizes } from "@assets/styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function VenueDetails({ route }) {
   const [imHere, setImHere] = useState(false);
+  const { user } = route.params;
   const { item } = route.params;
   const { setCurrentLocation } = route.params;
   const { currentLocation } = route.params;
   const placeId = item.place_id;
+  const userObject = JSON.parse(user);
 
   useEffect(() => {
     if (currentLocation === placeId) {
@@ -35,7 +42,8 @@ export default function VenueDetails({ route }) {
         </Text>
         {!imHere && (
           <TouchButton
-            _onPress={() => {
+            _onPress={async () => {
+              await addUserCurrentLocation(userObject.authId, placeId);
               setImHere(true);
               setCurrentLocation(placeId);
             }}
@@ -48,9 +56,10 @@ export default function VenueDetails({ route }) {
         )}
         {imHere && (
           <TouchButton
-            _onPress={() => {
+            _onPress={async () => {
+              await removeUserCurrentLocation(userObject.authId);
               setImHere(false);
-              setCurrentLocation("");
+              setCurrentLocation(null);
             }}
             title={"I'm Leaving"}
             color={"#7DDBC3"}

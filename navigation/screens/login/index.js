@@ -12,9 +12,6 @@ import {
   checkForExistingUser,
 } from "@utils/helpers";
 
-// TODO: Implement social login helper functions for google
-// TODO: clear db and sign up using fb
-
 export default function LoginScreen({ navigation }) {
   useEffect(() => {
     AsyncStorage.getItem("@user_info", (err, result) => {

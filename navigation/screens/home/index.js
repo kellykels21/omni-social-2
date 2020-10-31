@@ -11,6 +11,8 @@ import { fetchLocalVenues, saveVenues } from "@utils/helpers";
 
 export default function HomeScreen({ navigation }) {
   const [venues, setVenues] = useState([]);
+  const [currentLocation, setCurrentLocation] = useState("");
+  const [user, setUser] = useState(null);
 
   //Get Venues from Google
   useEffect(() => {
@@ -25,6 +27,7 @@ export default function HomeScreen({ navigation }) {
       await saveVenues(venues);
 
       const userObject = await AsyncStorage.getItem("@user_info");
+      setUser(userObject);
       console.log("USER:", JSON.parse(userObject));
     }
 
@@ -40,6 +43,7 @@ export default function HomeScreen({ navigation }) {
             item,
             currentLocation,
             setCurrentLocation,
+            user,
           });
         }}
       />
