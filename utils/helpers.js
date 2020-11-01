@@ -122,13 +122,51 @@ export async function checkForExistingUser(authId) {
   }
 }
 
-export async function addUserCurrentLocation(userId, placeId) {
-  console.log(userId);
-  console.log(placeId);
+export async function addUserCurrentLocation(authId, placeId) {
+  try {
+    console.log("Adding User's Current Location to DB...");
+
+    const user = await axios({
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      url:
+        OMNI_API_URL +
+        "/user/location/add?authId=" +
+        authId +
+        "&placeId=" +
+        placeId,
+    });
+
+    console.log(user);
+
+    if (user.data.currentLocation === placeId) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export async function removeUserCurrentLocation(userId) {
-  console.log(userId);
+export async function removeUserCurrentLocation(authId) {
+  try {
+    console.log("Adding User's Current Location to DB...");
+
+    const user = await axios({
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      url: OMNI_API_URL + "/user/location/remove?authId=" + authId,
+    });
+
+    if (user.data.currentLocation === null) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 /*
