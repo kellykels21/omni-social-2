@@ -169,6 +169,22 @@ export async function removeUserCurrentLocation(authId) {
   }
 }
 
+export async function searchUsers(handle) {
+  try {
+    console.log("Searching DB for Users...");
+    console.log(handle);
+    const user = await axios({
+      method: "get",
+      headers: { "Content-Type": "application/json" },
+      url: OMNI_API_URL + "/user/search?handle=" + handle,
+    });
+
+    return user.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 /*
 
   Render Image (Jumbotron)
