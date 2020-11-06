@@ -13,6 +13,9 @@ export default UserList = ({ users, _onPress }) => {
             }}
           >
             <Text style={{ color: "white" }}>{item.handle}</Text>
+            <Text style={{ color: "grey" }}>
+              {item.firstName} {item.lastName}
+            </Text>
           </TouchableOpacity>
         )}
       />

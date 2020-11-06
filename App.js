@@ -5,12 +5,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import LoginScreen from "@navigation/screens/login";
 import HomeScreen from "@navigation/screens/home";
-import FriendsScreen from "@navigation/screens/friends";
+import SearchScreen from "@navigation/screens/search";
+import UserDetails from "@navigation/screens/search/user-details";
 import FormScreen from "@navigation/screens/login/form";
 import VenueDetailsScreen from "@navigation/screens/home/venue-details";
 
 const RootStack = createStackNavigator();
 const LoginStack = createStackNavigator();
+const SearchStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Login() {
@@ -30,6 +32,19 @@ function Login() {
   );
 }
 
+function Search() {
+  return (
+    <SearchStack.Navigator>
+      <SearchStack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <SearchStack.Screen name="UserDetails" component={UserDetails} />
+    </SearchStack.Navigator>
+  );
+}
+
 function Tabs() {
   return (
     <Tab.Navigator
@@ -40,7 +55,7 @@ function Tabs() {
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Friends" component={FriendsScreen} />
+      <Tab.Screen name="Search" component={Search} />
     </Tab.Navigator>
   );
 }

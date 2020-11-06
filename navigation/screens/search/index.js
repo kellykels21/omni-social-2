@@ -3,14 +3,13 @@ import { SafeAreaView, TextInput, StyleSheet, View, Text } from "react-native";
 import { emojiSizes } from "@assets/styles";
 import Emoji from "@components/atoms/emoji";
 import UserList from "@components/organisms/user-list";
-import { OMNI_API_URL } from "@env";
 import { searchUsers } from "@utils/helpers";
 
 //TODO: Implement navigation to user profile on click
 //TODO: Create user profile screen
 //TODO: implement friend request system
 
-export default function FriendScreen({ navigation }) {
+export default function SearchScreen({ navigation }) {
   const [text, setText] = useState("");
   const [users, setUsers] = useState([]);
 
@@ -49,7 +48,11 @@ export default function FriendScreen({ navigation }) {
       <View style={styles.searchList}>
         <UserList
           users={users}
-          _onPress={(item) => console.log("user clicked in list", item)}
+          _onPress={(user) =>
+            navigation.navigate("UserDetails", {
+              user,
+            })
+          }
         ></UserList>
       </View>
     </SafeAreaView>
@@ -66,5 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  searchList: {},
+  searchList: {
+    paddingLeft: 50,
+  },
 });
