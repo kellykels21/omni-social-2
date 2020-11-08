@@ -173,13 +173,14 @@ export async function searchUsers(handle) {
   try {
     console.log("Searching DB for Users...");
     console.log(handle);
-    const user = await axios({
+
+    const result = await axios({
       method: "get",
       headers: { "Content-Type": "application/json" },
       url: OMNI_API_URL + "/user/search?handle=" + handle,
     });
 
-    return user.data;
+    return result.data;
   } catch (error) {
     console.log(error);
   }
