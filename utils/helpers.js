@@ -170,14 +170,33 @@ export async function removeUserCurrentLocation(authId) {
 }
 
 export async function searchUsers(handle) {
+  const userObject = await AsyncStorage.getItem("@user_info");
+
+  const url =
+    OMNI_API_URL +
+    "/user/search?handle=" +
+    handle +
+    "&authId=" +
+    JSON.parse(userObject).authId;
+
+  console.log(url);
   try {
     console.log("Searching DB for Users...");
     console.log(handle);
 
+    // const response = await fetch(url, {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   redirect: "follow", // manual, *follow, error
+    //   referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    // });
+
     const result = await axios({
       method: "get",
       headers: { "Content-Type": "application/json" },
-      url: OMNI_API_URL + "/user/search?handle=" + handle,
+      url: url,
     });
 
     return result.data;
