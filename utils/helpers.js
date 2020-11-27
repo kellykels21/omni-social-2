@@ -104,7 +104,7 @@ export async function saveVenues(data) {
 export async function checkForExistingUser(authId) {
   try {
     console.log("Checking for Existing User...");
-
+    console.log("PATH", OMNI_API_URL + "/user/search/authId?authId=" + authId);
     const user = await axios({
       method: "get",
       headers: { "Content-Type": "application/json" },
@@ -203,6 +203,10 @@ export async function searchUsers(handle) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function createFriendRequest() {
+  // Create two new friend requests
 }
 
 /*
