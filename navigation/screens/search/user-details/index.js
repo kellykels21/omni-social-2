@@ -1,13 +1,13 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
-
 import Avatar from "@components/atoms/avatar";
+import { createFriendRequest } from "@utils/helpers";
+import { SafeAreaView, StyleSheet, View, Text } from "react-native";
 import { container, avatarSizes, buttonSizes } from "@assets/styles";
 
 //TODO: Start filling out the UI for the User Details
 //TODO: Pick a UI library?
 
-export default UserDetails = ({ user }) => {
+export default UserDetails = ({ route }) => {
   return (
     <SafeAreaView style={[container, { backgroundColor: "#100D38" }]}>
       <View style={styles.headerButtons}>
@@ -23,7 +23,8 @@ export default UserDetails = ({ user }) => {
         />
         <TouchButton
           _onPress={async () => {
-            console.log("clicked user detail button");
+            const toUserId = route.params.user.authId;
+            const result = await createFriendRequest(toUserId);
           }}
           title={"Friend Request"}
           color={"blue"}

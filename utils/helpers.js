@@ -205,8 +205,32 @@ export async function searchUsers(handle) {
   }
 }
 
-export async function createFriendRequest() {
-  // Create two new friend requests
+export async function createFriendRequest(toUserId) {
+  const userObject = await AsyncStorage.getItem("@user_info");
+  const fromUserId = JSON.parse(userObject).authId;
+
+  const url =
+    OMNI_API_URL +
+    "/user/friend/request/create?from=" +
+    fromUserId +
+    "&to=" +
+    toUserId;
+
+  console.log(url);
+
+  try {
+    console.log("Creating friend request...");
+
+    const result = await axios({
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      url: url,
+    });
+
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 /*
