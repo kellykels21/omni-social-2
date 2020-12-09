@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import LoginScreen from "@navigation/screens/login";
 import HomeScreen from "@navigation/screens/home";
@@ -11,6 +12,7 @@ import FormScreen from "@navigation/screens/login/form";
 import VenueDetailsScreen from "@navigation/screens/home/venue-details";
 
 const RootStack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 const LoginStack = createStackNavigator();
 const SearchStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,6 +62,20 @@ function Tabs() {
   );
 }
 
+function HamburgerMenu() {
+  return (
+    <Drawer.Navigator
+      tabBarOptions={{
+        style: {
+          backgroundColor: "rgba(22, 22, 22, 1.0)",
+        },
+      }}
+    >
+      <Tab.Screen name="Home" component={Tabs} />
+    </Drawer.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -71,7 +87,7 @@ export default function App() {
         />
         <RootStack.Screen
           name="Tabs"
-          component={Tabs}
+          component={HamburgerMenu}
           options={{ headerShown: false, gestureEnabled: false }}
         />
         <RootStack.Screen name="VenueDetails" component={VenueDetailsScreen} />
